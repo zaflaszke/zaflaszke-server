@@ -1,6 +1,8 @@
 package pl.kk.zaflaszke.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -37,6 +41,15 @@ public class Advertisement {
   @JoinColumn(name = "OWNER", nullable = false)
   @ManyToOne(fetch = FetchType.LAZY)
   private User owner;
+
+  @JoinColumn(name = "CITY", nullable = false)
+  @ManyToOne(fetch = FetchType.LAZY)
+  private City city;
+
+  @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  @JoinTable(name = "ADV_CATEGORY", joinColumns = {@JoinColumn(name = "ADV_ID")},
+      inverseJoinColumns = {@JoinColumn(name = "CATEGORY_ID")})
+  private List<Category> categories;
 
   public Long getId() {
     return id;
@@ -86,5 +99,19 @@ public class Advertisement {
     this.owner = owner;
   }
 
+  public City getCity() {
+    return city;
+  }
 
+  public void setCity(City city) {
+    this.city = city;
+  }
+
+  public List<Category> getCategories() {
+    return categories;
+  }
+
+  public void setCategories(List<Category> categories) {
+    this.categories = categories;
+  }
 }
