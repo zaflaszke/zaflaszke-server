@@ -6,20 +6,20 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * CategoryPO
+ * VoivodeshipPO
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen",
     date = "2018-06-10T19:09:03.245Z")
 
-public class CategoryPO {
+public class VoivodeshipPO {
   @JsonProperty("id")
   private Long id = null;
 
   @JsonProperty("name")
   private String name = null;
 
-  public CategoryPO id(Long id) {
+  public VoivodeshipPO id(Long id) {
     this.id = id;
     return this;
   }
@@ -40,7 +40,7 @@ public class CategoryPO {
     this.id = id;
   }
 
-  public CategoryPO name(String name) {
+  public VoivodeshipPO name(String name) {
     this.name = name;
     return this;
   }
@@ -70,8 +70,9 @@ public class CategoryPO {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CategoryPO categoryPO = (CategoryPO) o;
-    return Objects.equals(this.id, categoryPO.id) && Objects.equals(this.name, categoryPO.name);
+    VoivodeshipPO voivodeshipPO = (VoivodeshipPO) o;
+    return Objects.equals(this.id, voivodeshipPO.id)
+        && Objects.equals(this.name, voivodeshipPO.name);
   }
 
   @Override
@@ -82,7 +83,7 @@ public class CategoryPO {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CategoryPO {\n");
+    sb.append("class VoivodeshipPO {\n");
 
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");

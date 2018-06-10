@@ -1,25 +1,29 @@
 package pl.kk.zaflaszke.models;
 
 import java.util.Objects;
+import javax.validation.Valid;
 import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * CategoryPO
+ * CityPO
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen",
     date = "2018-06-10T19:09:03.245Z")
 
-public class CategoryPO {
+public class CityPO {
   @JsonProperty("id")
   private Long id = null;
 
   @JsonProperty("name")
   private String name = null;
 
-  public CategoryPO id(Long id) {
+  @JsonProperty("voivodeship")
+  private VoivodeshipPO voivodeship = null;
+
+  public CityPO id(Long id) {
     this.id = id;
     return this;
   }
@@ -40,7 +44,7 @@ public class CategoryPO {
     this.id = id;
   }
 
-  public CategoryPO name(String name) {
+  public CityPO name(String name) {
     this.name = name;
     return this;
   }
@@ -61,6 +65,28 @@ public class CategoryPO {
     this.name = name;
   }
 
+  public CityPO voivodeship(VoivodeshipPO voivodeship) {
+    this.voivodeship = voivodeship;
+    return this;
+  }
+
+  /**
+   * Get voivodeship
+   * 
+   * @return voivodeship
+   **/
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  public VoivodeshipPO getVoivodeship() {
+    return voivodeship;
+  }
+
+  public void setVoivodeship(VoivodeshipPO voivodeship) {
+    this.voivodeship = voivodeship;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -70,22 +96,24 @@ public class CategoryPO {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CategoryPO categoryPO = (CategoryPO) o;
-    return Objects.equals(this.id, categoryPO.id) && Objects.equals(this.name, categoryPO.name);
+    CityPO cityPO = (CityPO) o;
+    return Objects.equals(this.id, cityPO.id) && Objects.equals(this.name, cityPO.name)
+        && Objects.equals(this.voivodeship, cityPO.voivodeship);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name);
+    return Objects.hash(id, name, voivodeship);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CategoryPO {\n");
+    sb.append("class CityPO {\n");
 
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    voivodeship: ").append(toIndentedString(voivodeship)).append("\n");
     sb.append("}");
     return sb.toString();
   }

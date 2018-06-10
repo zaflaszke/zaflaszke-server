@@ -14,12 +14,18 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @author Mares
  */
 @Entity
 @Table(name = "ADVERTISEMENT")
+@Builder
+@Getter
+@Setter
 public class Advertisement {
 
   @Id
@@ -51,67 +57,4 @@ public class Advertisement {
       inverseJoinColumns = {@JoinColumn(name = "CATEGORY_ID")})
   private List<Category> categories;
 
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public String getTitle() {
-    return title;
-  }
-
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  public Integer getPrice() {
-    return price;
-  }
-
-  public void setPrice(Integer price) {
-    this.price = price;
-  }
-
-  public LocalDateTime getCreationDate() {
-    return creationDate;
-  }
-
-  public void setCreationDate(LocalDateTime creationDate) {
-    this.creationDate = creationDate;
-  }
-
-  public User getOwner() {
-    return owner;
-  }
-
-  public void setOwner(User owner) {
-    this.owner = owner;
-  }
-
-  public City getCity() {
-    return city;
-  }
-
-  public void setCity(City city) {
-    this.city = city;
-  }
-
-  public List<Category> getCategories() {
-    return categories;
-  }
-
-  public void setCategories(List<Category> categories) {
-    this.categories = categories;
-  }
 }

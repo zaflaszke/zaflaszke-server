@@ -8,12 +8,18 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @author Mares
  */
 @Entity
 @Table(name = "CITY")
+@Builder
+@Getter
+@Setter
 public class City {
 
   @Id
@@ -27,27 +33,4 @@ public class City {
   @ManyToOne
   private Voivodeship voivodeship;
 
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public Voivodeship getVoivodeship() {
-    return voivodeship;
-  }
-
-  public void setVoivodeship(Voivodeship voivodeship) {
-    this.voivodeship = voivodeship;
-  }
 }

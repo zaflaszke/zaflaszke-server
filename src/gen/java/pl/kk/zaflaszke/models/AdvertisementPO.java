@@ -13,7 +13,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen",
-    date = "2018-05-28T17:54:16.682Z")
+    date = "2018-06-10T19:43:55.192Z")
 
 public class AdvertisementPO {
   @JsonProperty("id")
@@ -26,6 +26,9 @@ public class AdvertisementPO {
   @JsonProperty("title")
   private String title = null;
 
+  @JsonProperty("description")
+  private String description = null;
+
   @JsonProperty("price")
   private Integer price = null;
 
@@ -33,7 +36,7 @@ public class AdvertisementPO {
   private String creationDate = null;
 
   @JsonProperty("city")
-  private String city = null;
+  private CityPO city = null;
 
   public AdvertisementPO id(Long id) {
     this.id = id;
@@ -107,6 +110,27 @@ public class AdvertisementPO {
     this.title = title;
   }
 
+  public AdvertisementPO description(String description) {
+    this.description = description;
+    return this;
+  }
+
+  /**
+   * Get description
+   * 
+   * @return description
+   **/
+  @ApiModelProperty(value = "")
+
+
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
   public AdvertisementPO price(Integer price) {
     this.price = price;
     return this;
@@ -149,7 +173,7 @@ public class AdvertisementPO {
     this.creationDate = creationDate;
   }
 
-  public AdvertisementPO city(String city) {
+  public AdvertisementPO city(CityPO city) {
     this.city = city;
     return this;
   }
@@ -161,12 +185,13 @@ public class AdvertisementPO {
    **/
   @ApiModelProperty(value = "")
 
+  @Valid
 
-  public String getCity() {
+  public CityPO getCity() {
     return city;
   }
 
-  public void setCity(String city) {
+  public void setCity(CityPO city) {
     this.city = city;
   }
 
@@ -183,6 +208,7 @@ public class AdvertisementPO {
     return Objects.equals(this.id, advertisementPO.id)
         && Objects.equals(this.categories, advertisementPO.categories)
         && Objects.equals(this.title, advertisementPO.title)
+        && Objects.equals(this.description, advertisementPO.description)
         && Objects.equals(this.price, advertisementPO.price)
         && Objects.equals(this.creationDate, advertisementPO.creationDate)
         && Objects.equals(this.city, advertisementPO.city);
@@ -190,7 +216,7 @@ public class AdvertisementPO {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, categories, title, price, creationDate, city);
+    return Objects.hash(id, categories, title, description, price, creationDate, city);
   }
 
   @Override
@@ -201,6 +227,7 @@ public class AdvertisementPO {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    categories: ").append(toIndentedString(categories)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
     sb.append("    creationDate: ").append(toIndentedString(creationDate)).append("\n");
     sb.append("    city: ").append(toIndentedString(city)).append("\n");
