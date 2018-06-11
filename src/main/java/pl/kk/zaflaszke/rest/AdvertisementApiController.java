@@ -5,9 +5,8 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import pl.kk.zaflaszke.advertisement.AdvertisementDto;
 import pl.kk.zaflaszke.advertisement.AdvertisementDtoToPoConverter;
 import pl.kk.zaflaszke.advertisement.AdvertisementService;
@@ -17,7 +16,7 @@ import pl.kk.zaflaszke.models.AdvertisementPO;
 /**
  * @author Mares
  */
-@Controller
+@RestController
 @CrossOrigin
 public class AdvertisementApiController implements AdvertApi {
 
@@ -32,15 +31,17 @@ public class AdvertisementApiController implements AdvertApi {
   }
 
   @Override
-  public @ResponseBody ResponseEntity<List<AdvertisementPO>> findAll() {
+  public ResponseEntity<List<AdvertisementPO>> findAll() {
     List<AdvertisementDto> advertismenets = advertisementService.findAll();
     List<AdvertisementPO> advertisementsPO =
         advertisementDtoToPoConverter.convertAll(advertismenets);
+
+    System.out.println("Ernest to pedał");
     return new ResponseEntity<List<AdvertisementPO>>(advertisementsPO, HttpStatus.OK);
   }
 
   @Override
-  public @ResponseBody ResponseEntity<Void> store(@Valid AdvertisementPO body) {
+  public ResponseEntity<Void> store(@Valid AdvertisementPO body) {
     // TODO Auto-generated method stub
     return null;
   }

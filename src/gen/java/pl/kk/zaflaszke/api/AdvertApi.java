@@ -27,8 +27,7 @@ public interface AdvertApi {
       response = AdvertisementPO.class, responseContainer = "List", tags = {"Advert",})
   @ApiResponses(value = {@ApiResponse(code = 200, message = "successful operation",
       response = AdvertisementPO.class, responseContainer = "List")})
-  @RequestMapping(value = "/advert", produces = {"application/xml", "application/json"},
-      method = RequestMethod.GET)
+  @RequestMapping(value = "/advert", produces = {"application/json"}, method = RequestMethod.GET)
   ResponseEntity<List<AdvertisementPO>> findAll();
 
 
