@@ -12,6 +12,6 @@ public class VoivodeshipDtoToPoConverter extends AbstractConverter<VoivodeshipDt
 
   @Override
   public VoivodeshipPO convert(VoivodeshipDto from) {
-    return new VoivodeshipPO().id(from.getId()).name(from.getName());
+    return new VoivodeshipPO().id(from.getId()).name(from.getName()).code(from.getCode());
   }
 }

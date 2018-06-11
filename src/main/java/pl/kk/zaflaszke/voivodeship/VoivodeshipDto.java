@@ -11,5 +11,6 @@ public class VoivodeshipDto {
 
   private Long id;
   private String name;
+  private String code;
 
 }

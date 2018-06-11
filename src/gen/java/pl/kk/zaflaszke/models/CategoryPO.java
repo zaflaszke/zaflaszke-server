@@ -10,7 +10,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen",
-    date = "2018-06-10T19:09:03.245Z")
+    date = "2018-06-11T17:21:18.143Z")
 
 public class CategoryPO {
   @JsonProperty("id")

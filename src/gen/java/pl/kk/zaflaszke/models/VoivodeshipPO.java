@@ -10,7 +10,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen",
-    date = "2018-06-10T19:09:03.245Z")
+    date = "2018-06-11T17:21:18.143Z")
 
 public class VoivodeshipPO {
   @JsonProperty("id")
@@ -18,6 +18,9 @@ public class VoivodeshipPO {
 
   @JsonProperty("name")
   private String name = null;
+
+  @JsonProperty("code")
+  private String code = null;
 
   public VoivodeshipPO id(Long id) {
     this.id = id;
@@ -61,6 +64,27 @@ public class VoivodeshipPO {
     this.name = name;
   }
 
+  public VoivodeshipPO code(String code) {
+    this.code = code;
+    return this;
+  }
+
+  /**
+   * Get code
+   * 
+   * @return code
+   **/
+  @ApiModelProperty(value = "")
+
+
+  public String getCode() {
+    return code;
+  }
+
+  public void setCode(String code) {
+    this.code = code;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -72,12 +96,13 @@ public class VoivodeshipPO {
     }
     VoivodeshipPO voivodeshipPO = (VoivodeshipPO) o;
     return Objects.equals(this.id, voivodeshipPO.id)
-        && Objects.equals(this.name, voivodeshipPO.name);
+        && Objects.equals(this.name, voivodeshipPO.name)
+        && Objects.equals(this.code, voivodeshipPO.code);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name);
+    return Objects.hash(id, name, code);
   }
 
   @Override
@@ -87,6 +112,7 @@ public class VoivodeshipPO {
 
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("}");
     return sb.toString();
   }

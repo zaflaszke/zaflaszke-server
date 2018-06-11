@@ -13,6 +13,7 @@ public class VoivodeshipConverter extends AbstractConverter<Voivodeship, Voivode
 
   @Override
   public VoivodeshipDto convert(Voivodeship from) {
-    return VoivodeshipDto.builder().id(from.getId()).name(from.getName()).build();
+    return VoivodeshipDto.builder().id(from.getId()).name(from.getName()).code(from.getCode())
+        .build();
   }
 }
