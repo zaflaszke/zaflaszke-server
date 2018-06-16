@@ -12,6 +12,7 @@ public class CategoryDtoToPoConverter extends AbstractConverter<CategoryDto, Cat
 
   @Override
   public CategoryPO convert(CategoryDto from) {
-    return new CategoryPO().id(from.getId()).name(from.getName());
+    return new CategoryPO().id(from.getId()).name(from.getName())
+        .description(from.getDescription());
   }
 }

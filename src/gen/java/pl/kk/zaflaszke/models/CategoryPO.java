@@ -10,7 +10,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen",
-    date = "2018-06-11T17:21:18.143Z")
+    date = "2018-06-16T13:28:47.786Z")
 
 public class CategoryPO {
   @JsonProperty("id")
@@ -18,6 +18,9 @@ public class CategoryPO {
 
   @JsonProperty("name")
   private String name = null;
+
+  @JsonProperty("description")
+  private String description = null;
 
   public CategoryPO id(Long id) {
     this.id = id;
@@ -61,6 +64,27 @@ public class CategoryPO {
     this.name = name;
   }
 
+  public CategoryPO description(String description) {
+    this.description = description;
+    return this;
+  }
+
+  /**
+   * Get description
+   * 
+   * @return description
+   **/
+  @ApiModelProperty(value = "")
+
+
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -71,12 +95,13 @@ public class CategoryPO {
       return false;
     }
     CategoryPO categoryPO = (CategoryPO) o;
-    return Objects.equals(this.id, categoryPO.id) && Objects.equals(this.name, categoryPO.name);
+    return Objects.equals(this.id, categoryPO.id) && Objects.equals(this.name, categoryPO.name)
+        && Objects.equals(this.description, categoryPO.description);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name);
+    return Objects.hash(id, name, description);
   }
 
   @Override
@@ -86,6 +111,7 @@ public class CategoryPO {
 
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("}");
     return sb.toString();
   }

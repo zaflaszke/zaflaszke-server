@@ -13,6 +13,7 @@ public class CategoryConverter extends AbstractConverter<Category, CategoryDto> 
 
   @Override
   public CategoryDto convert(Category from) {
-    return CategoryDto.builder().id(from.getId()).name(from.getName()).build();
+    return CategoryDto.builder().id(from.getId()).name(from.getName())
+        .description(from.getDescription()).build();
   }
 }
