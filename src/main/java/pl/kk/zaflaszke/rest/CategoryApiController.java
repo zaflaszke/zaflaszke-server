@@ -2,10 +2,17 @@ package pl.kk.zaflaszke.rest;
 
 import java.util.List;
 import javax.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import io.swagger.annotations.ApiParam;
 import pl.kk.zaflaszke.api.CategoryApi;
+import pl.kk.zaflaszke.category.CategoryDto;
+import pl.kk.zaflaszke.category.CategoryDtoToPoConverter;
+import pl.kk.zaflaszke.category.CategoryService;
 import pl.kk.zaflaszke.models.CategoryPO;
 
 /**
@@ -15,15 +22,32 @@ import pl.kk.zaflaszke.models.CategoryPO;
 @CrossOrigin
 public class CategoryApiController implements CategoryApi {
 
-  @Override
-  public ResponseEntity<List<CategoryPO>> findAllCategories() {
-    // TODO Auto-generated method stub
-    return null;
+  private final CategoryService categoryService;
+  private final CategoryDtoToPoConverter categoryDtoToPoConverter;
+  private final CategoryPoToDtoConverter categoryPoToDtoConverter;
+
+  @Autowired
+  public CategoryApiController(CategoryService categoryService,
+      CategoryDtoToPoConverter categoryDtoToPoConverter,
+      CategoryPoToDtoConverter categoryPoToDtoConverter) {
+    this.categoryService = categoryService;
+    this.categoryDtoToPoConverter = categoryDtoToPoConverter;
+    this.categoryPoToDtoConverter = categoryPoToDtoConverter;
   }
 
   @Override
-  public ResponseEntity<Void> storeCategory(@Valid CategoryPO body) {
-    // TODO Auto-generated method stub
-    return null;
+  public ResponseEntity<List<CategoryPO>> findAllCategories() {
+    List<CategoryDto> categoriesDto = categoryService.findAll();
+    List<CategoryPO> categoriesPo = categoryDtoToPoConverter.convertAll(categoriesDto);
+    return new ResponseEntity<List<CategoryPO>>(categoriesPo, HttpStatus.OK);
+  }
+
+  @Override
+  public ResponseEntity<Void> storeCategory(
+      @ApiParam(value = "Advertisement object that needs to be stored",
+          required = true) @Valid @RequestBody CategoryPO body) {
+    CategoryDto categoryDto = categoryPoToDtoConverter.convert(body);
+    categoryService.store(categoryDto);
+    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
   }
 }
