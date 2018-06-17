@@ -12,6 +12,7 @@ import io.swagger.annotations.ApiParam;
 import pl.kk.zaflaszke.advertisement.AdvertisementDto;
 import pl.kk.zaflaszke.advertisement.AdvertisementDtoToPoConverter;
 import pl.kk.zaflaszke.advertisement.AdvertisementPoToDtoConverter;
+import pl.kk.zaflaszke.advertisement.AdvertisementPoValidator;
 import pl.kk.zaflaszke.advertisement.AdvertisementService;
 import pl.kk.zaflaszke.api.AdvertApi;
 import pl.kk.zaflaszke.models.AdvertisementPO;
@@ -26,14 +27,17 @@ public class AdvertisementApiController implements AdvertApi {
   private final AdvertisementService advertisementService;
   private final AdvertisementDtoToPoConverter advertisementDtoToPoConverter;
   private final AdvertisementPoToDtoConverter advertisementPoToDtoConverter;
+  private final AdvertisementPoValidator advertisementPoValidator;
 
   @Autowired
   public AdvertisementApiController(AdvertisementService advertisementService,
       AdvertisementDtoToPoConverter advertisementDtoToPoConverter,
-      AdvertisementPoToDtoConverter advertisementPoToDtoConverter) {
+      AdvertisementPoToDtoConverter advertisementPoToDtoConverter,
+      AdvertisementPoValidator advertisementPoValidator) {
     this.advertisementService = advertisementService;
     this.advertisementDtoToPoConverter = advertisementDtoToPoConverter;
     this.advertisementPoToDtoConverter = advertisementPoToDtoConverter;
+    this.advertisementPoValidator = advertisementPoValidator;
   }
 
   @Override
@@ -48,6 +52,7 @@ public class AdvertisementApiController implements AdvertApi {
   public ResponseEntity<Void> store(
       @ApiParam(value = "Advertisement object that needs to be stored",
           required = true) @Valid @RequestBody AdvertisementPO body) {
+    advertisementPoValidator.validateThrowingException(body);
     AdvertisementDto advertDto = advertisementPoToDtoConverter.convert(body);
     advertisementService.store(advertDto);
     return new ResponseEntity<>(HttpStatus.NO_CONTENT);
