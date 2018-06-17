@@ -13,3 +13,5 @@ insert into VOIVODESHIP(id, code, name) values (12, 'P', 'Wielkopolskie');
 insert into VOIVODESHIP(id, code, name) values (13, 'R', 'Podkarpackie');
 insert into VOIVODESHIP(id, code, name) values (14, 'S', 'Śląskie');
 insert into VOIVODESHIP(id, code, name) values (15, 'W', 'Mazowieckie');
+
+insert INTO USER(id, name, email) values (1, 'Marek', 'mkort92@gmail.com');

@@ -11,4 +11,6 @@ public interface AdvertisementService {
 
   List<AdvertisementDto> findAll();
 
+  void store(AdvertisementDto advertDto);
+
 }
